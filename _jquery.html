@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>JQUERY TES</title>
+
+  <!-- Vendors Style : bootstrap,morris,sweetalert -->
+  <link rel="stylesheet" href="ra/main/css/vendors_css.css">
+
+  <!-- Rhythm Admin Style  -->
+  <link rel="stylesheet" href="ra/main/css/style.css">
+  <link rel="stylesheet" href="RA/main/css/skin_color.css">
+
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-success fixed">
+
+  <section class="content">
+    <h1 id="Judul">Blank Page</h1>
+    <div id="SubJudul"></div>
+    <div id="Isi" class="text-bold"></div>
+
+    <input type="text" id="Tx1" class="form-control" />
+    <input type="date" id="Tg1" class="form-control" />
+    <hr>
+    <button id="btn1" class="btn btn-primary">Button -1</button>
+    <button id="btn2" class="btn btn-primary">Button -2 Format Data</button>
+   
+
+    <hr>
+    <select id="pilihan" class="form-control"></select>
+    <button id="btn3" class="btn btn-primary">Isi select data</button>
+    
+     <button id="btn4" class="btn btn-primary">Append tag html</button>
+     <div id="Data" class="text-bold"></div>
+  </section>
+
+</body>
+
+<!-- Vendor JS jQuery v3.3.1 -->
+<script src="/RA/main/js/vendors.min.js"></script> <!-- -->
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Rhythm Admin JS  -->
+<script src="/RA/Main/js/template.js"></script>
+<script>
+  $(document).ready(function () {
+
+    // Manipulasi html
+    $('#Judul').text("jQuery Tes");
+    $('#Tx1').val("jQuery Tes");
+
+
+    // Memberi event klik pada button
+    $("#btn1").click(function () {
+      alert("Tombol telah diklik!");
+    });
+
+    $('#btn2').click(function () {
+      FormatData();
+    });
+
+    $('#btn3').click(function () {
+      var opsi = [
+        { value: 1, text: "Pilihan 1" },
+        { value: 2, text: "Pilihan 2" },
+        { value: 3, text: "Pilihan 3" }
+      ];
+      $.each(opsi, function (index, value) {
+        $("#pilihan").append(
+          "<option value='" + value.value + "'>" + value.text + "</option>"
+        );
+      });
+
+    });
+
+    $('#btn4').click(function () {
+      var tx = $("<h3>").text("Ini adalah teks baru 1");
+        $("#Data").append(tx);
+    });
+
+    // Membuat function
+    function FormatData() {
+      $("#Judul").css('color', 'red');
+      $('#Tx1').val("format  data sukses");
+
+      // membuat tag HTML append() atau html()      
+      var txt2 = "<h6 class='text-info'>Ini adalah teks baru 2</h6>";
+      $("#Isi").html(txt2);
+
+      // membuat objek Date dengan tanggal saat ini
+      var TglSekarang = new Date();
+      $("#Isi").append('Tanggal Sekarang : ' + TglSekarang);
+      // membuat objek Date dengan string tanggal tertentu
+      var dateString = "2021-02-17"; // format: yyyy-mm-dd
+      var dateFromString = new Date(dateString);
+      $("#Tg1").val(dateFromString);
+
+    };
+
+
+
+
+
+
+  });
+</script>
+
+</html>

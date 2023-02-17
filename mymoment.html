@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MomentJS</title>
+<!-- Vendors Style : bootstrap,morris,sweetalert -->
+<link rel="stylesheet" href="ra/main/css/vendors_css.css">
+
+<!-- Rhythm Admin Style  -->  
+  <link rel="stylesheet" href="ra/main/css/style.css">
+<link rel="stylesheet" href="RA/main/css/skin_color.css">
+</head>
+<body class="light-skin theme-success">
+  
+    <section class="content">
+        <H1>Momment.js Tes</H1>
+
+        <label id="label1"></label>
+        <div class="col-md-6">
+            <div class="form-group">
+              <label class="form-label">Last Name</label>
+              <input type="text" class="form-control" placeholder="Last Name">
+            </div>
+          </div>
+
+       <button id="BT1" class="btn btn-primary"> BT1</button>
+    </section>
+</body>
+
+<script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="/RA/main/js/template.js"></script>   <!-- Rhythm Admin -->
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="moment/min/moment.min.js"></script>
+
+<script>
+const dateString = '2023-02-16 13:45:30';
+const date = moment(dateString, 'YYYY-MM-DD HH:mm:ss');
+
+console.log(date.format('DD/MM/YYYY')); // Output: 16/02/2023
+console.log(date.format('MMMM Do YYYY, h:mm:ss a')); // Output: February 16th 2023, 1:45:30 pm
+console.log(date.format('dddd')); // Output: Thursday
+
+</script>
+</html>
