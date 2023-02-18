@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank</title>
+
+    <!-- Vendors Style : bootstrap,morris,sweetalert -->
+    <link rel="stylesheet" href="/RA/main/css/vendors_css.css">
+
+    <!-- Rhythm Admin Style  -->
+    <link rel="stylesheet" href="/RA/main/css/style.css">
+    <link rel="stylesheet" href="/RA/main/css/skin_color.css">
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-success fixed">
+
+    <section class="content">
+        <h1>Blank Page</h1>
+
+    </section>
+
+
+</body>
+
+<!-- Vendor JS -->
+<script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Rhythm Admin JS  -->
+<script src="/RA/Main/js/template.js"></script>
+<script>
+    $.ajax({
+        method: "GET",
+        url: "https://jsonplaceholder.typicode.com/posts/1",
+        contentType: "application/json",
+        dataType: "json",
+        success: function (dto) {
+           
+            console.log(dto.login);
+
+            // mengambil nilai IDPASIEN 
+            $.map(dto.list, function (k, i) {
+                console.log(k.IDPASIEN);
+            });
+        },
+        error: function (m) {
+            console.log(m);
+        }
+    });
+
+</script>
+
+</html>

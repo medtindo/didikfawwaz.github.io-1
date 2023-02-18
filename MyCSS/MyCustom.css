@@ -1,0 +1,59 @@
+.content {
+    min-height: 250px;
+    padding: 0.5rem 0.5rem 0px 0.5rem;
+    margin-right: auto;
+    margin-left: auto;
+}
+
+.box-body {
+    padding: 0.5rem;
+    -ms-flex: 1 1 auto;
+    flex: 1 1 auto;
+    border-radius: 5px;
+}
+
+
+/* Modifikasi Tabel */
+.table > thead > tr > td, .table > thead > tr > th {
+    padding: 0.5rem;
+    vertical-align: middle;
+}
+
+.table > tbody > tr > td, .table > tbody > tr > th {
+    padding: 0.3rem;
+    vertical-align: middle;
+}
+/* ----------------------------------------------------l */
+
+
+.tengah {
+    min-height: 80vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    // height: 50px;
+    //border: 1px solid green;
+    padding-bottom: 50px;
+    //background-color:yellow;
+}
+
+
+/* Modifikasi form-control bootstrap*/
+.form-control {
+
+    border-radius: 5px;
+    box-shadow: none;
+    border-color: #abc3cf;
+    height: auto;
+}
+
+    .form-control:focus,
+    .form-select:focus {
+        /* border-color: #c8d8f8;
+    box-shadow: 0px 1px 1px rgba(0, 0, 0, 0.025) inset, 0px 0px 8px rgba(0, 100, 255, 0.2);*/
+        /*  Ungu =============== */
+       /* border-color: rgba(255, 100, 255, 0.5);*/
+        box-shadow: 0px 0px 0px rgba(0, 1, 1, 0.075) inset, 0px 0px 8px rgba(255, 100, 255, 0.5);
+      
+        background-color:#fbfbf3;
+    }

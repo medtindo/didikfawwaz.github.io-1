@@ -13,6 +13,7 @@
   <!-- Rhythm Admin Style  -->
   <link rel="stylesheet" href="/RA/main/css/style.css">
   <link rel="stylesheet" href="/RA/main/css/skin_color.css">
+  <link rel="stylesheet" href="/MyCSS/MyCustom.css">
 
 </head>
 
@@ -147,11 +148,24 @@
 
           <!-- Isi Halaman ---------------------------------------------------------- -->
 
-          <h1>Index</h1>
+          <h4>Data Post</h1>
           <div class="form-group">
-            <label class="form-label">First Name</label>
+            <label class="form-label" >Pencarian</label>
             <input type="text" class="form-control" placeholder="First Name">
           </div>
+
+          <div class="d-flex justify-content-between">
+            <span id="URL" class="text-lg-start "></span>
+            <button id="BT1" class="btn btn-primary">Refresh Data</button>
+        </div>
+        <table class="table table-responsive-sm" id="Tabel1">
+            <thead>
+                <td>Id</td>
+                <td>Title</td>
+            </thead>
+            <tbody>            
+            </tbody>
+        </table>
 
           <!-- Akhir Halaman -------------------------------------------------------- -->
 
@@ -198,6 +212,37 @@
 <script src="/MyGlobal/global.js"></script>
 <script>
   $("#Nama").text(NamaOrganisasi);
+
+
+  var url = 'https://jsonplaceholder.typicode.com/posts';
+    $("#URL").html(url);
+    ShowData();
+
+    function ShowData() {
+        $.ajax({
+            url: url,
+            method: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+               
+                $("#Tabel1 tbody").empty()
+
+                $.map(data, function (k, i) {
+
+                    $("#Tabel1 tbody").append(
+                        '<tr>' +
+                        '<td>' + k.id + '</td>' +
+                        '<td>' + k.title + '</td>' +
+                        '</tr>'
+                    )
+                })
+            },
+            error: function (masalah) {
+                console.log(masalah);
+            }
+        });
+    }
 </script>
 
 </html>

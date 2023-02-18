@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Blank</title>
+
+   <!-- Vendors Style : bootstrap,morris,sweetalert -->
+   <link rel="stylesheet" href="/RA/main/css/vendors_css.css">
+
+   <!-- Rhythm Admin Style  -->  
+   <link rel="stylesheet" href="/RA/main/css/style.css">
+   <link rel="stylesheet" href="/RA/main/css/skin_color.css">
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-success fixed">
+ 
+    <section class="content">
+        <h1>Data Web Post</h1>
+        <div id="DataWebPost"></div>
+    </section>
+ 
+ 
+</body>
+
+<!-- Vendor JS -->
+<script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+ <!-- Rhythm Admin JS  --> 
+ <script src="/RA/Main/js/template.js"></script>
+<script src="/MyGlobal/global.js"></script>
+<script>
+ShowDataWebPost1();
+
+function ShowDataWebPost1() {
+        $.ajax({
+            url: BU + 'SIMRS-API/web/post?limit=10',
+            method: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+                console.log(data);
+                $("#DataWebPost").empty()
+
+                $.map(data, function (k, i) {
+                    $("#DataWebPost").append(
+                        '<div class="d-flex  mb-30">' +
+                        '<div class="p-2 rounded10 bg-primary-light"  > ' +
+                        '<img  src="' + k.tumbnail + '" alt="user" width="30" height="40">' +
+                        '</div>' +
+                        '<div class="d-flex flex-column flex-grow-1 fw-500">' +
+                        '<a href=wp_post?id=' + k.id + ' target="_blank" class="text-dark hover-primary mb-1 fs-16">' + k.JUDUL + '</a>' +
+                        '<span class="text-muted pull-right ml-3"> Tanggal Post : ' + k.TGL + '</span>' +
+                        '</div>' +
+                        '</div>'
+                    )
+                })
+            },
+            error: function (masalah) {
+                console.log(masalah);
+            }
+        });
+    }
+</script>
+
+</html>

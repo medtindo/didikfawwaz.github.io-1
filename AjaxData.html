@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>IOT</title>
+
+    <!-- Vendors Style : bootstrap,morris,sweetalert -->
+    <link rel="stylesheet" href="/RA/main/css/vendors_css.css">
+
+    <!-- Rhythm Admin Style  -->
+    <link rel="stylesheet" href="/RA/main/css/style.css">
+    <link rel="stylesheet" href="/RA/main/css/skin_color.css">
+    <link rel="stylesheet" href="/MyCSS/MyCustom.css">
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-success fixed">
+
+    <section class="content">
+        <h1>Data Post</h1>
+        <div class="d-flex justify-content-between">
+            <span id="URL" class="text-lg-start "></span>
+            <button id="BT1" class="btn btn-primary">Refresh Data</button>
+        </div>
+        <table class="table table-responsive-sm" id="Tabel1">
+            <thead>
+                <td>Id</td>
+                <td>Title</td>
+            </thead>
+            <tbody>            
+            </tbody>
+        </table>
+        
+    </section>
+
+
+</body>
+
+<!-- Vendor JS -->
+<script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<!-- Rhythm Admin JS  -->
+<script src="/RA/Main/js/template.js"></script>
+<script src="/MyGlobal/global.js"></script>
+
+<script>
+
+    var url = 'https://jsonplaceholder.typicode.com/posts';
+    $("#URL").html(url);
+    ShowData();
+
+    function ShowData() {
+        $.ajax({
+            url: url,
+            method: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (data) {
+               
+                $("#Tabel1 tbody").empty()
+
+                $.map(data, function (k, i) {
+
+                    $("#Tabel1 tbody").append(
+                        '<tr>' +
+                        '<td>' + k.id + '</td>' +
+                        '<td>' + k.title + '</td>' +
+                        '</tr>'
+                    )
+                })
+            },
+            error: function (masalah) {
+                console.log(masalah);
+            }
+        });
+    }
+</script>
+
+</html>
