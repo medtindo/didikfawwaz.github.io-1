@@ -88,13 +88,10 @@
                   <a class="dropdown-item" href="#"><i class="ti-user text-muted me-2"></i> Profile</a>
                   <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a>
                   <div class="dropdown-divider"></div>
-                  @if (User.Identity.IsAuthenticated) {
+                
                   <a class="dropdown-item" asp-controller="Antrean" asp-action="logout"><i
                       class="ti-lock text-muted me-2"></i> Logout</a>
-                  } else {
-                  <a class="dropdown-item" asp-controller="Antrean" asp-action="login"><i
-                      class="ti-lock text-muted me-2"></i> Login</a>
-                  }
+               
                 </li>
               </ul>
             </li>
@@ -150,13 +147,18 @@
 
           <h4>Data Post</h1>
           <div class="form-group">
-            <label class="form-label" >Pencarian</label>
-            <input type="text" class="form-control" placeholder="First Name">
+            <label class="form-label pt-2" >Pencarian di </label>
+            <span id="URL" class="text-warning "></span>
+            <input type="text" class="form-control" placeholder="...">
           </div>
 
-          <div class="d-flex justify-content-between">
-            <span id="URL" class="text-lg-start "></span>
-            <button id="BT1" class="btn btn-primary">Refresh Data</button>
+          <img id="ImgProses" src="/Animasi/Loader3.gif" alt="loader" style="display: none"/>
+          <div class="d-flex justify-content-end">       
+           
+              <button id="BT1" class="btn btn-primary">Refresh Data</button>
+              <button id="BT2" class="btn btn-warning">Format Tabel</button>
+
+           
         </div>
         <table class="table table-responsive-sm" id="Tabel1">
             <thead>
@@ -216,20 +218,25 @@
 
   var url = 'https://jsonplaceholder.typicode.com/posts';
     $("#URL").html(url);
-    ShowData();
+
+   
+    $("#BT1").click(function(){
+      ShowData();
+
+    });
+    
 
     function ShowData() {
+      $("#ImgProses").css("display", "block");
+
         $.ajax({
             url: url,
             method: "GET",
             contentType: "application/json",
             dataType: "json",
-            success: function (data) {
-               
+            success: function (data) {               
                 $("#Tabel1 tbody").empty()
-
                 $.map(data, function (k, i) {
-
                     $("#Tabel1 tbody").append(
                         '<tr>' +
                         '<td>' + k.id + '</td>' +
@@ -243,6 +250,24 @@
             }
         });
     }
+    $(document).ajaxComplete(function () {
+            $("#ImgProses").delay(1000).fadeOut();
+
+        });
+
+   function FormatDataTable(){
+     // DataTable
+     $('#Tabel1').DataTable({
+                'paging': true,
+                "pageLength": 20,
+                'lengthChange': false,
+                'searching': false,
+                'ordering': true,
+                'info': true,
+                'autoWidth': false
+            });
+   }
+
 </script>
 
 </html>
