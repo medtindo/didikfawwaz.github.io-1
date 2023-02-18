@@ -34,7 +34,7 @@
             <span id="Nama" class="text-primary"></span>
 
             <span id="Nama" class="text-primary"></span>
-            
+
           </div>
 
         </a>
@@ -88,10 +88,10 @@
                   <a class="dropdown-item" href="#"><i class="ti-user text-muted me-2"></i> Profile</a>
                   <a class="dropdown-item" href="#"><i class="ti-settings text-muted me-2"></i> Settings</a>
                   <div class="dropdown-divider"></div>
-                
+
                   <a class="dropdown-item" asp-controller="Antrean" asp-action="logout"><i
                       class="ti-lock text-muted me-2"></i> Logout</a>
-               
+
                 </li>
               </ul>
             </li>
@@ -146,30 +146,30 @@
           <!-- Isi Halaman ---------------------------------------------------------- -->
 
           <h4>Data Post</h1>
-          <div class="form-group">
-            <label class="form-label pt-2" >Pencarian di </label>
-            <span id="URL" class="text-warning "></span>
-            <input type="text" class="form-control" placeholder="...">
-          </div>
+            <div class="form-group">
+              <label class="form-label pt-2">Pencarian di </label>
+              <span id="URL" class="text-warning "></span>
+              <input type="text" class="form-control" placeholder="...">
+            </div>
 
-          <img id="ImgProses" src="/Animasi/Loader3.gif" alt="loader" style="display: none"/>
-          <div class="d-flex justify-content-end">       
-           
+            <img id="ImgProses" src="/Animasi/Loader3.gif" alt="loader" style="display: none" />
+            <div class="d-flex justify-content-end">
+
               <button id="BT1" class="btn btn-primary">Refresh Data</button>
               <button id="BT2" class="btn btn-warning">Format Tabel</button>
 
-           
-        </div>
-        <table class="table table-responsive-sm" id="Tabel1">
-            <thead>
+
+            </div>
+            <table class="table table-responsive-sm" id="Tabel1">
+              <thead>
                 <td>Id</td>
                 <td>Title</td>
-            </thead>
-            <tbody>            
-            </tbody>
-        </table>
+              </thead>
+              <tbody>
+              </tbody>
+            </table>
 
-          <!-- Akhir Halaman -------------------------------------------------------- -->
+            <!-- Akhir Halaman -------------------------------------------------------- -->
 
 
 
@@ -208,65 +208,68 @@
 <script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
 <script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="/RA/assets/vendor_components/datatable/datatables.min.js"></script>
 
 <!-- Rhythm Admin JS  -->
 <script src="/RA/main/js/template.js"></script>
 <script src="/MyGlobal/global.js"></script>
 <script>
   $("#Nama").text(NamaOrganisasi);
-
-
   var url = 'https://jsonplaceholder.typicode.com/posts';
-    $("#URL").html(url);
+  $("#URL").html(url);
+  ShowData()
 
-   
-    $("#BT1").click(function(){
-      ShowData();
 
+  $("#BT1").click(function () {
+    ShowData();
+
+  });
+  $("#BT2").click(function () {
+    FormatDataTable();
+  });
+
+
+  function ShowData() {
+    $("#ImgProses").css("display", "block");
+
+    $.ajax({
+      url: url,
+      method: "GET",
+      contentType: "application/json",
+      dataType: "json",
+      success: function (data) {
+        $("#Tabel1 tbody").empty()
+        $.map(data, function (k, i) {
+          $("#Tabel1 tbody").append(
+            '<tr>' +
+            '<td>' + k.id + '</td>' +
+            '<td>' + k.title + '</td>' +
+            '</tr>'
+          )
+        })
+      },
+      error: function (masalah) {
+        console.log(masalah);
+      }
     });
-    
+  }
+  $(document).ajaxComplete(function () {
+    $("#ImgProses").delay(1000).fadeOut();
 
-    function ShowData() {
-      $("#ImgProses").css("display", "block");
+  });
 
-        $.ajax({
-            url: url,
-            method: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (data) {               
-                $("#Tabel1 tbody").empty()
-                $.map(data, function (k, i) {
-                    $("#Tabel1 tbody").append(
-                        '<tr>' +
-                        '<td>' + k.id + '</td>' +
-                        '<td>' + k.title + '</td>' +
-                        '</tr>'
-                    )
-                })
-            },
-            error: function (masalah) {
-                console.log(masalah);
-            }
-        });
-    }
-    $(document).ajaxComplete(function () {
-            $("#ImgProses").delay(1000).fadeOut();
-
-        });
-
-   function FormatDataTable(){
-     // DataTable
-     $('#Tabel1').DataTable({
-                'paging': true,
-                "pageLength": 20,
-                'lengthChange': false,
-                'searching': false,
-                'ordering': true,
-                'info': true,
-                'autoWidth': false
-            });
-   }
+  function FormatDataTable() {
+    // DataTable
+    $('#Tabel1').DataTable({
+      'paging': true,
+      "pageLength": 20,
+      'lengthChange': false,
+      'searching': false,
+      'ordering': true,
+      'info': true,
+      'autoWidth': false
+    });
+  }
 
 </script>
 
