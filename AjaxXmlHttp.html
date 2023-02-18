@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank</title>
+
+    <!-- Vendors Style : bootstrap,morris,sweetalert -->
+    <link rel="stylesheet" href="/RA/main/css/vendors_css.css">
+
+    <!-- Rhythm Admin Style  -->
+    <link rel="stylesheet" href="/RA/main/css/style.css">
+    <link rel="stylesheet" href="/RA/main/css/skin_color.css">
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-success fixed">
+
+    <section class="content">
+        <h1>Ajax XMLHttpRequest </h1>
+        <input type="text" id="KataKunci" class="form-control" />
+        <div id="URL"> </div>
+        <div class="d-flex justify-content-end">
+            <button id="BT1" class="btn btn-success m-2">Refresh Data</button>
+            <button id="BT2" class="btn btn-primary m-2">Format JsonView</button>
+        </div>
+        <div class="box">
+            <div id="IsiData" class="box-body"> </div>
+
+        </div>
+
+    </section>
+
+
+</body>
+
+<!-- Vendor JS -->
+<script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-jsonview/1.2.3/jquery.jsonview.min.js"
+    integrity="sha512-ff/E/8AEnLDXnTCyIa+l80evPRNH8q5XnPGY/NgBL645jzHL1ksmXonVMDt7e5D34Y4DTOv+P+9Rmo9jBSSyIg=="
+    crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
+<!-- Rhythm Admin JS  -->
+<script src="/RA/Main/js/template.js"></script>
+
+<script>
+
+    var JsonString;
+
+    $("#BT1").click(function () {
+        ProsesAJAX();
+    });
+
+    $("#BT2").click(function () {
+        $("#IsiData").JSONView(JsonString);
+    });
+
+    function ProsesAJAX() {
+        // deklarasi variabel
+        var xhr = new XMLHttpRequest
+        var url = 'https://jsonplaceholder.typicode.com/posts';
+        $("#URL").html(url);
+
+        // cek ajax ready
+        xhr.onreadystatechange = function () {
+            if (xhr.readyState == 4 && xhr.status == 200) {
+                JsonString = xhr.responseText;
+                $("#IsiData").html(JsonString)
+
+            }
+        }
+        // eksekusi ajax;
+        xhr.open('GET', url, true);
+        xhr.send();
+    }
+
+
+
+</script>
+
+</html>
