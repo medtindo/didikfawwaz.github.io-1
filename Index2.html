@@ -191,76 +191,22 @@
 
 </body>
 
+
 <!-- Vendor JS -->
 <script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+
+<script>
+    $('#content div').hide();     
+</script>
+
 <script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
 <script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 <script src="/RA/assets/vendor_components/datatable/datatables.min.js"></script>
 
 <!-- Rhythm Admin JS  -->
-<script src="/RA/main/js/template.js"></script>
+
 <script src="/MyGlobal/global.js"></script>
 <script src="/MyGlobal/MyIndex.js"></script>
-<script>
 
-
-
-    var url = 'https://jsonplaceholder.typicode.com/posts';
-    $("#URL").html(url);
-    ShowData()
-
-
-    $("#BT1").click(function () {
-        ShowData();
-
-    });
-    $("#BT2").click(function () {
-        FormatDataTable();
-    });
-
-
-    function ShowData() {
-        $("#ImgProses").css("display", "block");
-
-        $.ajax({
-            url: url,
-            method: "GET",
-            contentType: "application/json",
-            dataType: "json",
-            success: function (data) {
-                $("#Tabel1 tbody").empty()
-                $.map(data, function (k, i) {
-                    $("#Tabel1 tbody").append(
-                        '<tr>' +
-                        '<td>' + k.id + '</td>' +
-                        '<td>' + k.title + '</td>' +
-                        '</tr>'
-                    )
-                })
-            },
-            error: function (masalah) {
-                console.log(masalah);
-            }
-        });
-    }
-    $(document).ajaxComplete(function () {
-        $("#ImgProses").delay(1000).fadeOut();
-
-    });
-
-    function FormatDataTable() {
-        // DataTable
-        $('#Tabel1').DataTable({
-            'paging': true,
-            "pageLength": 20,
-            'lengthChange': false,
-            'searching': false,
-            'ordering': true,
-            'info': true,
-            'autoWidth': false
-        });
-    }
-
-</script>
 
 </html>

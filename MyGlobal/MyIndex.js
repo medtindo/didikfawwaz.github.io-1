@@ -4,7 +4,7 @@ $(document).ready(function() {
     $(".oAlamat").text(OrganisasiAlamat);
 
     // Semua elemen konten awalnya disembunyikan
-    $('#content div').hide();    
+   // $('#content div').hide();    
     
     
     // Tampilkan elemen home saat halaman dimuat
