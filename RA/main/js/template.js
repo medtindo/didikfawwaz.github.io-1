@@ -1548,28 +1548,31 @@ function w3_close() {
 
 var loader;
 
-// function loadNow(opacity) {
-//     if (opacity <= 0) {
-//         displayContent();
-//     } else {
-//         loader.style.opacity = opacity;
-//         window.setTimeout(function () {
-//             loadNow(opacity - 0.05);
-//         }, 50);
-//     }
-// }
+function loadNow(opacity) {
+   
+    if (opacity <= 0) {
+        console.log("tes1")
+        displayContent();
+    } else {
+        console.log("tes2")
+        loader.style.opacity = opacity;
+        window.setTimeout(function () {
+            loadNow(opacity - 0.05);
+        }, 50);
+    }
+}
 
-// function displayContent() {
-//     loader.style.display = 'none';
-// }
+function displayContent() {
+    loader.style.display = 'none';
+}
 
-// document.addEventListener("DOMContentLoaded", function () {
-//     loader = document.getElementById('loader');
-//     loadNow(1);
-// });
+document.addEventListener("DOMContentLoaded", function () {
+    loader = document.getElementById('loader');
+    loadNow(1);
+});
 
 
-// new PerfectScrollbar(".multinav-scroll");
+ new PerfectScrollbar(".multinav-scroll");
 
 
 var tooltipTriggerList = [].slice.call(document.querySelectorAll('[data-bs-toggle="tooltip"]'))
