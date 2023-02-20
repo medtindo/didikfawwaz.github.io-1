@@ -18,7 +18,7 @@
 <body class="hold-transition light-skin sidebar-mini theme-success fixed">
 
     <section class="content">
-        <h1>Ajax XMLHttpRequest </h1>
+        <h1>Ajax jQuery </h1>
         <input type="text" id="KataKunci" class="form-control" />
         <div id="URL"> </div>
         <div class="d-flex justify-content-end">
@@ -29,6 +29,17 @@
             <div id="IsiData" class="box-body bg-food-dark"> </div>
 
         </div>
+
+
+        <table class="table table-responsive-sm" id="Tabel1">
+            <thead>
+                <td>Id</td>
+                <td>Title</td>
+            </thead>
+            <tbody>
+            </tbody>
+        </table>
+
 
     </section>
 
@@ -49,6 +60,8 @@
 <script>
 
     var JsonString;
+    var urlNya = 'https://jsonplaceholder.typicode.com/posts';
+    $("#URL").html(urlNya);
 
     $("#BT1").click(function () {
         ProsesAJAX();
@@ -59,21 +72,31 @@
     });
 
     function ProsesAJAX() {
-        // deklarasi variabel
-        var xhr = new XMLHttpRequest
-        var url = 'https://jsonplaceholder.typicode.com/posts';
-        $("#URL").html(url);
-
-        // cek ajax ready
-        xhr.onreadystatechange = function () {
-            if (xhr.readyState == 4 && xhr.status == 200) {
-                JsonString = xhr.responseText;
+        $.ajax({
+            url: urlNya,
+            method: "GET",
+            contentType: "application/json",
+            dataType: "json",
+            success: function (dt) {
+                JsonString = JSON.stringify(dt);
                 $("#IsiData").html(JsonString)
+                $.map(dt, function (k, i) {
+                    $("#Tabel1 tbody").append(
+                        '<tr>' +
+                        '<td>' + k.id + '</td>' +
+                        '<td>' + k.title + '</td>' +
+                        '</tr>'
+                    )
+                })
+                console.log("SUKSES");
+            },
+            error: function (xhr, status, error) {
+                console.log(error);
             }
-        }
-        // eksekusi ajax;
-        xhr.open('GET', url, true);
-        xhr.send();
+
+
+        });
+        
     }
 
 
