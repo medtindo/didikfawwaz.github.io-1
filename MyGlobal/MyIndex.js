@@ -27,5 +27,13 @@ $(document).ready(function() {
       $('html, body').animate({
         scrollTop: 0
       }, 1000);
+      
+      // Tutup sidebar  jika layar mobile
+      $('body').removeClass('sidebar-open');
+      
     });
+
+
+
+    
   });
