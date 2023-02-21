@@ -1551,10 +1551,10 @@ var loader;
 function loadNow(opacity) {
    
     if (opacity <= 0) {
-        console.log("tes1")
+       
         displayContent();
     } else {
-        console.log("tes2")
+      
         loader.style.opacity = opacity;
         window.setTimeout(function () {
             loadNow(opacity - 0.05);
