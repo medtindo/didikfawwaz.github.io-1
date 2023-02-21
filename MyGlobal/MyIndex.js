@@ -8,7 +8,7 @@ $(document).ready(function() {
     $('.PG').hide();
     
     // Tampilkan elemen home saat halaman dimuat
-    $('#Page_home').show();
+    $('#Page_01').show();
     
    
 
