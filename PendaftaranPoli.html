@@ -1,0 +1,678 @@
+
+
+
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>HOME</title>
+
+    <!-- Vendors Style : bootstrap,morris,sweetalert -->
+    <link rel="stylesheet" href="/RA/main/css/vendors_css.css">
+
+    <!-- Rhythm Admin Style  -->
+    <link rel="stylesheet" href="/RA/main/css/style.css">
+    <link rel="stylesheet" href="/RA/main/css/skin_color.css">
+    <link rel="stylesheet" href="/MyCSS/MyCustom.css">
+
+
+<style> 
+        .wizard-content .wizard.wizard-circle > .steps .step {
+            width: 30px;
+            height: 30px;
+            line-height: 23px;
+            font-size: small;
+        }
+
+        .wizard-content
+        .wizard > .steps > ul > li.current .step {
+            border-color: #ffba29;
+            background-color: #df741e;
+            color: #ffffff;
+        }
+
+        .wizard-content .wizard.wizard-circle > .steps > ul > li:after,
+        .wizard-content .wizard.wizard-circle > .steps > ul > li:before {
+            top: 35px;
+        }
+
+        /* CSS agar icon step selalu 1 baris di media kecil */
+        @media (max-width:768px) {
+            .wizard-content .wizard > .steps > ul > li {
+                display: table-cell;
+                float: none;
+            }
+        }
+
+        .icheck-list {
+            float: left;
+            padding-right: 0px;
+            */ padding-top: 10px;
+        }
+    </style>
+</head>
+
+
+<div class="box p-5">
+
+
+
+
+
+    <div class="card wizard-content" id="WZ">
+        <div class="row pt-2">
+            <div class="col-9">
+                <img src="~/Image/S_Img/50/booking.png" />
+                <span class="card-title font-16">PENDAFTARAN POLI</span>
+            </div>
+
+        </div>
+
+        <form action="#" class="validation-wizard wizard-circle">
+
+            <h6>Jenis Px</h6>
+            <section>
+                <div class="row pt-2">
+                    <div class="col-sm-6 ml-auto mr-auto">
+                        <h5 class="card-title text-primary"><i class="far fa-dot-circle info"></i>Jenis Pendaftaran</h5>
+                        <h6>Silahkan pilih jenis pendaftaran yang anda inginkan</h6>
+                        <div class="input-group pl-3">
+                            <ul class="icheck-list" id="DataKategori">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+            </section>
+
+
+            <h6>Poli</h6>
+            <section>
+
+                <div class="row pt-5">
+                    <div class="col-sm-12 ml-auto mr-auto">
+
+                        <h5 class="card-title text-primary"><i class="far fa-dot-circle info"></i>Poliklinik</h5>
+                        <h6>Silahkan pilih tujuan layanan poli yang anda inginkan</h6>
+                        <div class="input-group form-horizontal">
+
+                            <ul class="icheck-list row" id="DataPoli">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+                <br />
+            </section>
+
+
+
+            <h6>Dokter</h6>
+            <section>
+
+
+
+                <div class="row pt-5">
+                    <div class="col-sm-12 ml-auto mr-auto">
+
+                        <h5 class="card-title text-primary"><i class="far fa-dot-circle info mr-2"></i>Pilih Dokter</h5>
+                        <h6>Silahkan pilih nama dokter <span id="KlpDokter" class="text-info font-bold mr-2"></span>yang anda inginkan</h6>
+                        <div class="input-group form-horizontal">
+
+                            <ul class="icheck-list row required" id="DataDokter">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                <br />
+            </section>
+
+
+
+
+            <h6>Hari</h6>
+            <section>
+
+                <div class="row pt-5">
+                    <div class="col-sm-12 ml-auto mr-auto">
+
+                        <h5 class="card-title text-primary"><i class="far fa-dot-circle info"></i>Pilih Hari</h5>
+                        <h6>Silahkan pilih hari antrian yang anda inginkan, berdasarkan jadwal dokter berikut ini;</h6>
+                        <div class="input-group form-horizontal">
+
+                            <ul class="icheck-list row" id="DataJadwal">
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+
+
+                <div class="row pt-5">
+                    <div class="col-sm-12 ml-auto mr-auto">
+                        <label for="Telp" class="card-title text-primary">Nomor Telepon : <small class="text-primary">*</small>  <span class="danger"></span></label>
+
+                        <div class="input-group">
+                            <div class="input-group-prepend">
+                                <span class="input-group-text" id="basic-addon1"><i class="icons-Old-Telephone"></i></span>
+                            </div>
+                            <input type="text" class="form-control" id="NoTelp" name="Telp" data-inputmask="'mask': '99999999999999'">
+
+                        </div>
+                        <h6>Contoh : 082XXXXXXXXX</h6>
+                        <h6>Mohon untuk mengisi nomor HP dengan benar. Kesalahan dalam pengisian nomor HP menyebabkan Anda gagal mendapatkan informasi.</h6>
+                    </div>
+                </div>
+                <br />
+            </section>
+
+
+        </form>
+
+
+    </div>
+
+
+    <div class="card-body">
+        <!-- sample modal content -->
+        <div id="Konfirmasi" class="modal" tabindex="-1" role="dialog" aria-labelledby="vcenter" style="display: none;" aria-hidden="true">
+            <div class="modal-dialog modal-dialog-centered">
+                <div class="modal-content">
+                    <div class="modal-header bg-info text-white">
+                        <h3 class="modal-title font-bold text-center"><i class="far fa-question-circle fa-lg mr-2"></i>Konfirmasi</h3>
+                    </div>
+                    <div class="modal-body">
+                        <h6>Data permintaan tiket antrian anda adalah sebagai berikut,</h6>
+                        <div id="Content_Section_TabelData" class="media-body table-responsive">
+                            <table class="table table-borderless  table-hover">
+                                <tbody id="Content_Section_Tbody2">
+                                    <tr>
+                                        <td class="w-25">Jenis</td>
+                                        <td>:</td>
+                                        <td id="R_Jenis"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-25">Tujuan</td>
+                                        <td>:</td>
+                                        <td id="R_Tujuan"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-25">Dokter</td>
+                                        <td>:</td>
+                                        <td id="R_Dokter"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-25">Tanggal</td>
+                                        <td>:</td>
+                                        <td id="R_Tanggal"></td>
+                                    </tr>
+                                    <tr>
+                                        <td class="w-25">No. Telepon</td>
+                                        <td>:</td>
+                                        <td id="R_NoTelp"></td>
+                                    </tr>
+                                </tbody>
+                            </table>
+                        </div>
+                        <h6 class="font-bold">Apakah anda setuju untuk diproses tiket antrian ?</h6>
+
+                    </div>
+                    <div class="modal-footer">
+                        <button type="button" id="BtnProses" class="btn btn-info waves-effect"><i class="fas fa-check"></i> Ya, Proses Antrian</button>
+                        <button type="button" id="BtnBatal" class="btn btn-primary waves-effect"><i class="fas fa-check"></i> Tidak</button>
+                        <button type="button" id="BtnReset" class="btn btn-danger waves-effect"><i class="fas fa-times"></i> Reset</button>
+
+                    </div>
+                    <br /><div id="ImgProses" style="display:none" class="p-2">
+                        <span>Proses ....</span>
+                        <img src="~/Image/Gambar/Loader3.gif" />
+                    </div>
+                </div>
+                <!-- /.modal-content -->
+            </div>
+            <!-- /.modal-dialog -->
+        </div>
+    </div>
+
+</div>
+
+
+
+
+<!-- Vendor JS -->
+<script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+
+
+
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="/RA/assets/vendor_components/datatable/datatables.min.js"></script>
+<script src="/RA/assets/vendor_components/jquery-toast-plugin-master/src/jquery.toast.js"></script>
+
+
+<script src="/RA/assets/vendor_components/jquery-steps-master/build/jquery.steps.js"></script>
+<script src="/RA/assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+
+
+<!-- Rhythm Admin JS  -->
+<script src="/RA/main/js/template.js"></script>
+<script src="/MyGlobal/global.js"></script>
+<script src="/MyGlobal/MyIndex.js"></script>
+
+<script src="/RA/main/js/pages/toastr.js"></script>
+<script src="/RA/main/js/pages/steps.js"></script>
+
+
+
+      
+    <script src="/assets/node_modules/wizard/jquery.steps.min.js"></script>
+    <script src="/assets/node_modules/wizard/jquery.validate.min.js"></script>
+    <script src="/MyJS/icheck/icheck.min.js"></script>
+    <script src="/MyJS/icheck/icheck.init.js"></script>
+    <script src="/RA/assets/vendor_components/jquery-steps-master/build/jquery.steps.js"></script>
+
+<script src="/assets/node_modules/inputmask/dist/min/jquery.inputmask.bundle.min.js"></script>
+
+    <script type="text/javascript">
+		
+		$(function() {
+			
+		});
+        $(document).ready(function () {
+			
+            var BU = 'https://antrean.rsghmadiun.com:8081/';
+
+            IsiKategori();
+
+          
+
+            //Event Klik Pembatalan button didalam tag form
+            $(".validation-wizard").on('click', '#Batalkan', function () {
+                window.location.href = "/Pendaftaran_PX/home";
+            });
+
+
+            $("#BtnBatal").click(function () {
+                $("#Konfirmasi").modal('hide');
+            });
+
+            $("#BtnReset").click(function () {
+                window.location.href = "/Pendaftaran_PX/daftar1";
+            });
+           
+		   	function GetResume() {
+                $("#R_Tujuan").text($("#KlpDokter").text());
+            }
+
+            function SelanjutNya() {
+                $(".validation-wizard").steps("next");
+            }
+
+            function IsiKategori() {
+                //  console.log('isi kategori');
+                $.ajax({
+                    method: "GET",
+                    url: BU + "/simrs-api/antrian/kategoripasien",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (response) {
+                        $('#DataKategori').empty();
+                        $.map(response.list, function (k, i) {
+                            $('#DataKategori').append(
+                                '<li>' +
+                                '<input type="radio" class="check" name="KTGR" id="' + k
+                                    .KATEGORI + '" value= "' + k.KATEGORI +
+                                '" data-radio="iradio_square-blue">' +
+                                '<label for="' + k.KATEGORI + '">' + k.KATEGORI +
+                                '</label>' +
+                                '</li>'
+                            )
+                        });
+                        icheckfirstinit();
+                        $('#DataKategori #Umum').iCheck('check'); //Umum Default
+
+                    },
+                    error: function (masalah) {
+                        console.log(masalah);
+                    }
+                });
+            }
+
+            //Event on checked
+            $(".validation-wizard").on('ifChecked', '#DataKategori', function () {
+                var KP = $('#DataKategori input[type="radio"]:checked').val();
+                $("#R_Jenis").text(KP);
+                console.log(Cookies.get('ck_d_KategoriPx'));
+                Cookies.set('ck_d_KategoriPx', KP);
+                IsiPoli();
+            });
+
+
+
+
+            function IsiPoli() {
+                var xurl;
+                var KP = Cookies.get('ck_d_KategoriPx');
+                if (KP == 'BPJS') {
+                    xurl= BU + "/simrs-api/antrian/datapoli/BPJS";
+                } else {
+                    xurl= BU + "/simrs-api/antrian/datapoli";
+                }
+
+                //  console.log("isi poli");
+                $.ajax({
+                    method: "GET",
+                    url: xurl,
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (response) {
+                        $('#DataPoli').empty();
+                        $.map(response.list, function (k, i) {
+                            $('#DataPoli').append(
+                                '<li class="col-sm-6 col-md-4 p-2 b-b">' +
+                                '<input type="radio" class="check" name="POLI" id="' + k
+                                    .KODE + '" value= "' + k.KODE +
+                                '" data-radio="iradio_square-blue">' +
+                                '<label for="' + k.KODE + '">' + k.POLI + '</label>' +
+                                '</li>'
+                            )
+                        });
+                        icheckfirstinit();
+                        $('#DataPoli #013').iCheck('check'); //Umum Default
+                    },
+                    error: function (masalah) { }
+                });
+            }
+
+
+
+            //Event Klik DataPoli
+            $(".validation-wizard").on('ifChecked', '#DataPoli', function () {
+                var IDPOLI = $('#DataPoli input[name="POLI"]:checked').val();
+                var PL = $('#DataPoli label[for=' + IDPOLI + ']').html();
+                $("#KlpDokter").text(PL);
+                $("#R_Tujuan").text(PL);
+                Cookies.set('ck_d_IDPOLI', IDPOLI);
+                Cookies.set('ck_d_POLI', PL);
+                IsiDokter()
+            });
+
+
+            function IsiDokter() {
+
+                console.log("Proses ISI DOKTER");
+                var IDPOLI = Cookies.get('ck_d_IDPOLI');
+                $.ajax({
+                    method: "GET",
+                    url: BU + "/simrs-api/antrian/DokterPoli/loket/" + IDPOLI,
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (response) {
+                        $('#DataDokter').empty();
+                        var n = 0;
+                        $.map(response.list, function (k, i) {
+                            n++;
+                            $('#DataDokter').append(
+                                '<li class="col-sm-6 col-md-4 p-2 b-b">' +
+                                '<img src="' + k.FOTO +
+                                '" class="rounded-circle mr-2" height="42" width="42">' +
+                                '<input type="radio" class="check" name="DOKTER" id="DR' +
+                                n +
+                                '" value= "' + k.IDL +
+                                '" data-radio="iradio_square-blue">' +
+                                '<br><label for="DR' + n + '">' + k.DOKTER +
+                                '</label>' +
+                                '</li>'
+                            )
+                        });
+                        icheckfirstinit();
+                        $('#DataDokter #DR1').iCheck('check'); // Default
+                    },
+                    error: function (masalah) {
+                        console.log(masalah);
+                    }
+                });
+            }
+
+            //Event Klik Nama DOKTER
+            $(".validation-wizard").on('ifChecked', '#DataDokter', function () {
+                var IDL = $('#DataDokter input[name="DOKTER"]:checked').val();
+                var DR = $('#DataDokter input[name="DOKTER"]:checked').attr('id');
+                var namaDokter = $('#DataDokter label[for=' + DR + ']').html();
+                $("#R_Dokter").html('[ <span class="text-info" id="IDL"> ' + IDL + '</span> ] ' + namaDokter);
+                Cookies.set('ck_d_IDL', IDL);
+                Cookies.set('ck_d_NamaDokter', namaDokter);
+                IsiJadwal();
+            });
+
+
+            function IsiJadwal() {
+                var loket = $("#IDL").text().trim();
+                console.log("Proses ISI JADWAL " + loket);
+
+                $.ajax({
+                    url: BU + "/simrs-api/antrian/dokterpoli/V2/" + loket,
+                    method: "GET",
+                    contentType: "application/json",
+                    dataType: "json",
+                    success: function (response) {
+                        // console.log(response);
+                        $('#DataJadwal').empty();
+                        var n = 0;
+                        $.map(response, function (k, i) {
+                            // var IDnya = k.HARI + '*' + k.JENIS + '*' + k.TANGGAL;
+                            n++;
+                            $('#DataJadwal').append(
+                                '<li class="col-sm-6 col-md-4 p-2 b-b">' +
+                                '<input type="radio" class="check" name="JADWAL" id="JW' +
+                                n +
+                                '" value= "JW' + n + '" data-radio="iradio_square-blue">' +
+                                '<label for="JW' + n + '">' + k.HARI + ' * ' + k.JENIS + ' * ' + k.TANGGAL + '</label>' +
+                                '</li>'
+                            )
+                        });
+                        icheckfirstinit();
+                         $('#DataJadwal #JW1').iCheck('check'); //Default
+                    },
+                    error: function (masalah) {
+                        console.log(masalah);
+                    }
+                });
+            }
+
+            //Event Klik DataJadwal
+            $(".validation-wizard").on('ifChecked', '#DataJadwal', function () {
+                var ID = $('#DataJadwal input[name="JADWAL"]:checked').val();
+                var JD = $('#DataJadwal label[for=' + ID + ']').html();
+                $("#R_Tanggal").html(JD);
+                var AR = JD.split(' * ');
+                Cookies.set('ck_d_JENIS', AR[1].trim());
+                Cookies.set('ck_d_TGL', AR[2].trim());
+				 $("#NoTelp").inputmask();
+            });
+
+
+
+            //Simpan - POS API
+            $("#BtnProses").click(function () {
+                var prm = new Object();
+				var notlp = $("#R_NoTelp").text();
+				notlp = notlp.replaceAll('_', '');
+				Cookies.set('ck_notlp',notlp);
+
+                prm.TGL = Cookies.get('ck_d_TGL');
+                prm.IDPASIEN = Cookies.get('ck_IDPASIEN');
+                prm.IDL = Cookies.get('ck_d_IDL'),
+                prm.JENIS = Cookies.get('ck_d_JENIS');
+                prm.KATEGORI_PX = Cookies.get('ck_d_KategoriPx');				
+                prm.TELP = Cookies.get('ck_notlp');
+
+                console.log(JSON.stringify(prm));
+
+                $.ajax({
+                    url: "/WebService/AjaxService.asmx/PostBookingAntrian",
+                    method: "POST",
+                    contentType: "application/json",
+                    dataType: "json",
+                    data: JSON.stringify(prm),
+                    beforeSend: function () {
+                        $("#ImgProses").show()
+                    },
+                    complete: function () {
+                        $("#ImgProses").fadeOut()
+                    },
+                    success: function (data) {
+                        console.log(data);
+                        var o = JSON.parse(data.d);
+                        if (o.type == "Sukses") {
+                            Swal.fire({
+                                type: 'success',
+                                html:
+                                    "<h3>" + o.message + " </h3>" +
+                                    "<p>Nomor Booking Anda</p>" +
+                                    "<h3><strong>" + o.data.NomorBooking + "</strong> </h3>",
+                                timer: 5000,
+                                onClose: () => {
+                                    // clearInterval(timerInterval)
+                                    window.location.href = "/Pendaftaran_PX/home";
+                                }
+                            })
+                            return false;
+                        }
+
+                        if (o.type == "Gagal") {
+                            Swal.fire("Informasi!", o.message, "error");
+                            return false;
+                        }
+
+                    },
+                    error: function (masalah) {
+                        console.log(masalah);
+                    }
+                });
+            });
+
+
+
+            var form = $(".validation-wizard").show();
+
+            $(".validation-wizard").steps({
+                headerTag: "h6",
+                bodyTag: "section",
+                transitionEffect: "fade",
+                titleTemplate: '<span class="step">#index#</span> #title#',
+                labels: {
+                    finish: "Proses Booking"
+                },
+                onStepChanging: function (event, currentIndex, newIndex) {
+                    GetResume();
+                    return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) <
+                        18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex +
+                            ") label.error").remove(), form.find(".body:eq(" + newIndex +
+                                ") .error").removeClass("error")), form.validate().settings.ignore =
+                            ":disabled,:hidden", form.valid())
+                },
+                onFinishing: function (event, currentIndex) {
+                    var nt = $("#NoTelp").val();
+                    if (nt.length < 5) {
+                      $("#NoTelp").focus();
+                        Swal.fire({
+                            type: 'warning',
+                            html:
+                                '<h3>Nomor Telpon Tidak Valid.</h1>' +
+                                '<p>Mohon nomor telepon diisi dengan benar.</p>',
+                            timer: 1500
+                        });
+                        return false;
+                    }
+                    return form.validate().settings.ignore = ":disabled", form.valid()
+                },
+                onFinished: function (event, currentIndex) {
+                   
+                   
+                   $("#R_NoTelp").text($("#NoTelp").val());
+                   $("#Konfirmasi").modal('show');
+                }
+
+
+
+            }), $(".validation-wizard").validate({
+                ignore: "input[type=hidden]",
+                errorClass: "text-danger",
+                successClass: "text-success",
+                highlight: function (element, errorClass) {
+                    $(element).removeClass(errorClass)
+                },
+                unhighlight: function (element, errorClass) {
+                    $(element).removeClass(errorClass)
+                },
+                errorPlacement: function (error, element) {
+                    error.insertAfter(element)
+                },
+                rules: {
+                    email: {
+                        email: !0
+                    }
+                }
+            })
+
+            var $input = $(   '<div class="text-left" id="Batalkan">  <button class="btn waves-effect waves-light btn-rounded btn-primary"><i class="fas fa-times"></i> Batal</button></div>');
+            $input.appendTo($('.actions'));
+
+
+
+
+        });
+    </script>
+
+
+    <script>
+
+        $("#BD").css('display', 'block');
+        $(".vNamaUser").text(Cookies.get('ck_NAMA'));
+      
+	   var BU = $("#HF1").val();
+        ShowDataWebPost();
+
+        $("#BtnPesan").click(function () {
+            ShowDataWebPost();
+        });
+
+        function ShowDataWebPost() {
+            $.ajax({
+                url: BU + 'SIMRS-API/notif/' + Cookies.get('ck_IDPASIEN'),
+                method: "GET",
+                contentType: "application/json",
+                dataType: "json",
+                success: function (data) {
+                    
+                    $("#DataNotifikasi").empty()
+					var n = 0;
+                    $.map(data.data, function (k, i) {
+                        n++;
+                        $("#DataNotifikasi").append(
+                            '<a href="#" >' +
+                            '<div class="btn btn-info btn-circle"><i class="fa fa-info"></i></div>' +
+                            '<div class="mail-contnet">' +
+                            '<span class="modal-title text-success font-bold ">' + k.header + '</span>' +
+                            '<p class="text-dark mb-1">' + k.pesan + '</p>' +
+                            '<span class="text-sm text-info"><i class="far fa-clock mr-1"> '+ k.tgl +' </span>' +
+                            '</div>' +
+                            '</a>'
+                        )
+                    })
+					 $("#JmlPesan").text(n);
+                },
+                error: function (masalah) {
+                    console.log(masalah);
+                }
+            });
+        }
+    </script>
+
+</body>
+</html>

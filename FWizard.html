@@ -1,0 +1,350 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Blank</title>
+
+    <!-- Vendors Style : bootstrap,morris,sweetalert -->
+    <link rel="stylesheet" href="/RA/main/css/vendors_css.css">
+
+    <!-- Rhythm Admin Style  -->
+    <link rel="stylesheet" href="/RA/main/css/style.css">
+    <link rel="stylesheet" href="/RA/main/css/skin_color.css">
+</head>
+
+<body class="hold-transition light-skin sidebar-mini theme-success fixed">
+    <div class="wrapper">
+        <div id="loader"></div>
+          <div class="multinav-scroll" style="height: 100%;">   </div> 
+       
+                <div class="container">
+                    <section class="content bg-white pt-5">
+                      
+
+                        <!-- Step wizard -->
+		  <div class="box">
+			<div class="box-header with-border">
+			  <h4 class="box-title">Client Registration</h4>
+			  <h6 class="box-subtitle">You can find the <a href="http://www.jquery-steps.com/" target="_blank">offical website </a></h6>		
+			</div>
+
+
+            
+			<!-- /.box-header -->
+			<div class="box-body wizard-content">
+				<form action="#" class="tab-wizard wizard-circle">
+					<!-- Step 1 -->
+					<h6>Client Information</h6>
+					<section>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="firstName5" class="form-label">First Name :</label>
+									<input type="text" class="form-control" id="firstName5">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="lastName1" class="form-label">Last Name :</label>
+									<input type="text" class="form-control" id="lastName1"> 
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="emailAddress1" class="form-label">Email Address :</label>
+									<input type="email" class="form-control" id="emailAddress1"> 
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="phoneNumber1" class="form-label">Phone Number :</label>
+									<input type="tel" class="form-control" id="phoneNumber1"> 
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="addressline1" class="form-label">Address Line 1 :</label>
+									<input type="text" class="form-control" id="addressline1"> 
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="addressline2" class="form-label">Address Line 2 :</label>
+									<input type="text" class="form-control" id="addressline2"> 
+								</div>
+							</div>
+						</div>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="location3" class="form-label">Select City :</label>
+									<select class="form-select" id="location3" name="location">
+										<option value="">Select City</option>
+										<option value="Amsterdam">India</option>
+										<option value="Berlin">USA</option>
+										<option value="Frankfurt">Dubai</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="date1" class="form-label">Date of Birth :</label>
+									<input type="date" class="form-control" id="date1"> 
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- Step 2 -->
+					<h6>Account Setup</h6>
+					<section>
+						<div class="row">
+							<div class="col-12">
+								<div class="form-group">
+									<label for="url123" class="form-label">URL :</label>
+									<input type="url" class="form-control" id="url123" placeholder="http://">
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-group">
+									<label for="username123" class="form-label">Username :</label>
+									<input type="text" class="form-control" id="username123">
+								</div>
+							</div>
+							<div class="col-6">
+								<div class="form-group">
+									<label for="password123" class="form-label">Password :</label>
+									<input type="password" class="form-control" id="password123">
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="form-label">User Group :</label>
+									<div class="c-inputs-stacked">
+										<input name="group123" type="radio" id="radio_123" value="1">
+										<label for="radio_123" class="d-block">Sales Person</label>
+										<input name="group456" type="radio" id="radio_456" value="1">
+										<label for="radio_456">Customer</label>
+									</div>
+								</div>
+							</div>
+							<div class="col-md-6">
+								<div class="form-group">
+									<label class="form-label">Communications :</label>
+									<div class="c-inputs-stacked">
+										<input type="checkbox" id="checkbox_123">
+										<label for="checkbox_123" class="d-block">Email</label>
+										<input type="checkbox" id="checkbox_234">
+										<label for="checkbox_234" class="d-block">SMS</label>
+										<input type="checkbox" id="checkbox_345">
+										<label for="checkbox_345" class="d-block">Phone</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- Step 3 -->
+					<h6>Billing Setup</h6>
+					<section>
+						<div class="row">
+							<div class="col-md-6">
+								<div class="form-group">
+									<label for="int123" class="form-label">Cardholder Name :</label>
+									<input type="text" class="form-control" id="int123">
+								</div>
+								<div class="form-group">
+									<label for="int234" class="form-label">Card Number :</label>
+									<input type="text" class="form-control" id="int234" placeholder="" value="23124567854356">
+								</div>
+
+								<div class="form-group">
+									<div class="row">
+										<div class="col-4">
+											<label for="intType1" class="form-label">Exp Month :</label>
+											<select class="form-select" id="intType1" data-placeholder="Exp Month" name="intType1">
+												<option value="">Select</option>
+												<option value="01">01</option>
+												<option value="02">02</option>
+												<option value="03">03</option>
+												<option value="04" selected="">04</option>
+												<option value="05">05</option>
+												<option value="06">06</option>
+												<option value="07">07</option>
+												<option value="08">08</option>
+												<option value="09">09</option>
+												<option value="10">10</option>
+												<option value="11">11</option>
+												<option value="12">12</option>
+											</select>
+										</div>
+										<div class="col-4">
+											<label for="intType1" class="form-label">Exp Year :</label>
+											<select class="form-select" id="intType12" data-placeholder="Exp Year" name="intType12">
+												<option value="">Select</option>
+												<option value="2018">2018</option>
+												<option value="2019">2019</option>
+												<option value="2020">2020</option>
+												<option value="2021" selected="">2021</option>
+												<option value="2022">2022</option>
+												<option value="2023">2023</option>
+												<option value="2024">2024</option>
+											</select>
+										</div>
+										<div class="col-4">
+											<label for="intType1" class="form-label">CVV :</label>										
+											<input type="number" class="form-control" name="billing_card_cvv" placeholder="" value="450" >
+										</div>
+									</div>
+
+								</div>
+								<div class="form-group">
+									<label for="Location1" class="form-label">Location :</label>
+									<select class="form-select" id="Location1" name="location">
+										<option value="">Select City</option>
+										<option value="India">India</option>
+										<option value="USA">USA</option>
+										<option value="Dubai">Dubai</option>
+									</select>
+								</div>
+							</div>
+							<div class="col-md-6">							
+								<div class="form-group">
+									<label for="addressline12" class="form-label">Address Line 1 :</label>
+									<input type="text" class="form-control" id="addressline12">
+								</div>
+
+								<div class="form-group">
+									<label for="addressline13" class="form-label">Address Line 1 :</label>
+									<input type="text" class="form-control" id="addressline13">
+								</div>
+								<div class="form-group">
+									<label class="form-label">Delivery Type :</label>
+									<div class="c-inputs-stacked">
+										<input name="group1" type="radio" id="radio_1" value="1">
+										<label for="radio_1" class="d-block">Standart Delevery</label>
+										<input name="group1" type="radio" id="radio_2" value="1">
+										<label for="radio_2">Fast Delevery</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+					<!-- Step 4 -->
+					<h6>Confirmation</h6>
+					<section>
+						<div class="row">
+							<div class="col-12">
+								<div class="form-group">
+									<label for="decisions1" class="form-label">Comments</label>
+									<textarea name="decisions" id="decisions1" rows="4" class="form-control"></textarea>
+								</div>
+								<div class="form-group">
+									<div class="c-inputs-stacked">
+										<input type="checkbox" id="checkbox_1">
+										<label for="checkbox_1" class="d-block">Click here to indicate that you have read and agree to the terms presented in the Terms and Conditions agreement</label>
+									</div>
+								</div>
+							</div>
+						</div>
+					</section>
+				</form>
+			</div>
+			<!-- /.box-body -->
+		  </div>
+		  <!-- /.box --> 
+
+
+
+
+
+
+
+                    </section>
+                </div>
+       
+    </div>
+
+   
+</body>
+
+<!-- Vendor JS -->
+<script src="/RA/main/js/vendors.min.js"></script> <!-- jQuery v3.3.1 -->
+<script src="/RA/assets/icons/feather-icons/feather.min.js"></script>
+<script src="//cdn.jsdelivr.net/npm/sweetalert2@11"></script>
+
+<script src="/RA/assets/vendor_components/jquery-validation-1.17.0/dist/jquery.validate.min.js"></script>
+<script src="/RA/assets/vendor_components/jquery-steps-master/build/jquery.steps.js"></script>
+<!-- Rhythm Admin JS  -->
+<script src="/RA/Main/js/template.js"></script>
+
+
+
+<script>
+
+
+
+    $(".tab-wizard").steps({
+        headerTag: "h6"
+        , bodyTag: "section"
+        , transitionEffect: "none"
+        , titleTemplate: '<span class="step">#index#</span> #title#'
+        , labels: {
+            finish: "Submit"
+        }
+        , onFinished: function (event, currentIndex) {
+            swal("Your Order Submitted!", "Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.");
+
+        }
+    });
+
+
+    var form = $(".validation-wizard").show();
+
+    $(".validation-wizard").steps({
+        headerTag: "h6"
+        , bodyTag: "section"
+        , transitionEffect: "none"
+        , titleTemplate: '<span class="step">#index#</span> #title#'
+        , labels: {
+            finish: "Submit"
+        }
+        , onStepChanging: function (event, currentIndex, newIndex) {
+            return currentIndex > newIndex || !(3 === newIndex && Number($("#age-2").val()) < 18) && (currentIndex < newIndex && (form.find(".body:eq(" + newIndex + ") label.error").remove(), form.find(".body:eq(" + newIndex + ") .error").removeClass("error")), form.validate().settings.ignore = ":disabled,:hidden", form.valid())
+        }
+        , onFinishing: function (event, currentIndex) {
+            return form.validate().settings.ignore = ":disabled", form.valid()
+        }
+        , onFinished: function (event, currentIndex) {
+            swal("Your Form Submitted!", "Sed dignissim lacinia nunc. Curabitur tortor. Pellentesque nibh. Aenean quam. In scelerisque sem at dolor. Maecenas mattis. Sed convallis tristique sem. Proin ut ligula vel nunc egestas porttitor.");
+        }
+    }), $(".validation-wizard").validate({
+        ignore: "input[type=hidden]"
+        , errorClass: "text-danger"
+        , successClass: "text-success"
+        , highlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+        }
+        , unhighlight: function (element, errorClass) {
+            $(element).removeClass(errorClass)
+        }
+        , errorPlacement: function (error, element) {
+            error.insertAfter(element)
+        }
+        , rules: {
+            email: {
+                email: !0
+            }
+        }
+    })
+
+
+
+</script>
+
+</html>
